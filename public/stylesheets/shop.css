@@ -1,0 +1,387 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Fantasy;
+}
+
+.topbar {
+  background-color: #a9d7d7;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  -webkit-box-shadow: 0 0 10px gray;
+          box-shadow: 0 0 10px gray;
+  z-index: 99;
+}
+
+.topbar_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-item-align: center;
+      align-self: center;
+  gap: 2rem;
+  margin: 0 2rem;
+}
+
+.topbar_list_logo a svg {
+  list-style-type: none;
+  margin: 1rem 1rem 0 -2rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.topbar_list_logo a svg:hover, .topbar_list_logo a svg:focus {
+  fill: #6a16e0;
+}
+
+.topbar_list_search {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px auto 10px 0;
+}
+
+.topbar_list_search svg {
+  height: 2rem;
+  position: absolute;
+  cursor: pointer;
+}
+
+.topbar_list_search_icon {
+  fill: gray;
+  z-index: 99;
+}
+
+.topbar_list_search_close {
+  visibility: hidden;
+  right: 0;
+  -webkit-transition: 500ms fill ease-in;
+  transition: 500ms fill ease-in;
+}
+
+.topbar_list_search_delete {
+  fill: gray;
+  right: 5rem;
+  display: none;
+}
+
+.topbar_list_search input {
+  -webkit-box-shadow: 0 0 10px 5px #d0d0d0;
+          box-shadow: 0 0 10px 5px #d0d0d0;
+  border: none;
+  border-radius: 50%;
+  margin-left: 1.4rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.6rem;
+  color: gray;
+  outline: none;
+  width: 2rem;
+  -webkit-transition: 500ms width ease-in-out, 500ms padding ease-in-out, 500ms border-radius ease-in-out;
+  transition: 500ms width ease-in-out, 500ms padding ease-in-out, 500ms border-radius ease-in-out;
+}
+
+.topbar_list_search input:not(:placeholder-shown) ~ .topbar_list_search_delete {
+  display: block;
+}
+
+.topbar_list_search-open input {
+  width: 34rem;
+  padding: 0.5rem 11rem 0.5rem 6rem;
+  border-radius: 5rem;
+}
+
+.topbar_list_search-open svg.topbar_list_search_close {
+  visibility: visible;
+  fill: gray;
+}
+
+.topbar_list_item {
+  list-style-type: none;
+  position: relative;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+}
+
+.topbar_list_item a {
+  color: black;
+  text-decoration: none;
+}
+
+.topbar_list_item:hover ul, .topbar_list_item:focus ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.topbar_list_item_drop {
+  list-style-type: none;
+  position: absolute;
+  top: 3.5rem;
+  left: -0.4rem;
+  -webkit-box-shadow: 0 0 10px gray;
+          box-shadow: 0 0 10px gray;
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 10rem;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.topbar_list_item_drop li {
+  padding: 0.3rem 1rem;
+  border-radius: 0.5rem;
+  -webkit-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+
+.topbar_list_item_drop li:hover, .topbar_list_item_drop li:focus {
+  background-color: #65e9d3;
+}
+
+.item {
+  margin: 6rem 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
+      grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
+  gap: 2.5rem;
+}
+
+.item_card {
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+  height: 50vh;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0px 2px 20px #bfc7c9;
+          box-shadow: 0px 2px 20px #bfc7c9;
+  -webkit-transition: 200ms all ease-in-out;
+  transition: 200ms all ease-in-out;
+  cursor: pointer;
+}
+
+.item_card_name {
+  font-size: 0.8rem;
+  color: white;
+  background: red;
+  padding: 0.5rem 1.3rem 0.5rem 1rem;
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  border-radius: 0 2rem 2rem 0;
+}
+
+.item_card img {
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 35vh;
+  width: 100%;
+}
+
+.item_card_body_hashtag {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4d97b2;
+  position: absolute;
+  top: 15rem;
+  left: 1rem;
+}
+
+.item_card_body_introduction {
+  font-size: 0.9rem;
+  color: black;
+  position: absolute;
+  top: 17rem;
+  left: 1rem;
+}
+
+.item_card_body_price {
+  font-size: 0.8rem;
+  color: black;
+  background: #00f7ff;
+  padding: 0.5rem 1.3rem 0.5rem 1rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 1rem;
+  right: 0;
+  border-radius: 2rem 0 0 2rem;
+}
+
+.item_card_body input {
+  font-weight: 500;
+  background-color: #bfc7c9;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  color: #e31b43;
+  position: absolute;
+  top: 12rem;
+  right: 1rem;
+}
+
+.item_card_body_price::after {
+  content: "NTD";
+}
+
+.item_card:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-box-shadow: #08f3cc;
+          box-shadow: #08f3cc;
+}
+
+.cart {
+  margin: 6rem 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
+.cart_card {
+  overflow: hidden;
+  position: relative;
+  background-color: #dedfe8;
+  -webkit-box-shadow: 0px 2px 20px #bfc7c9;
+          box-shadow: 0px 2px 20px #bfc7c9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  height: 40vh;
+}
+
+.cart_card img {
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 30%;
+  height: 100%;
+}
+
+.cart_card_body {
+  position: absolute;
+  margin: 1rem;
+  width: 65%;
+  height: 35vh;
+  right: 0;
+}
+
+.cart_card_body_name {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.cart_card_body_hashtag {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #4d97b2;
+}
+
+.cart_card_body_introduction {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  color: black;
+}
+
+.cart_card_body_price {
+  font-size: 1.2rem;
+  color: black;
+  background: #00f7ff;
+  padding: 0.5rem 1.3rem 0.5rem 1rem;
+  position: absolute;
+  bottom: 1rem;
+  right: -1rem;
+  border-radius: 2rem 0 0 2rem;
+}
+
+.cart_card_body_price::after {
+  content: "NTD";
+}
+
+.footer {
+  background-color: gray;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer_contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.3rem;
+  list-style: none;
+  position: absolute;
+  top: -2.2rem;
+  right: 0;
+  margin: 0 2rem;
+}
+
+.footer_about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem 10rem;
+}
+
+.footer_about li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .item {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .item {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+/*# sourceMappingURL=shop.css.map */

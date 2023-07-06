@@ -1,0 +1,318 @@
+*{
+    box-sizing: border-box;
+    border: 0;
+    margin: 0;
+}
+body{
+    font-family: Fantasy;
+}
+
+//topbar
+.topbar{
+    background-color: rgb(169, 215, 215);
+    position: fixed;
+    top:0;
+    width: 100vw;
+    box-shadow: 0 0 10px gray;
+    z-index: 99;
+    &_list{
+        display: flex;
+        justify-content: flex-end;
+        align-self: center;
+        gap: 2rem;
+        margin: 0 2rem;
+        &_logo a svg{
+            list-style-type:none;
+            margin: 1rem 1rem 0 -2rem ;
+            font-size: 2rem;
+            cursor:pointer;
+
+            &:hover,&:focus{
+                fill:rgb(106, 22, 224) ;
+            }
+        }
+        &_search{
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin:10px auto 10px 0;
+            svg{
+                height: 2rem;
+                position: absolute;
+                cursor: pointer;
+            }
+            &_icon{
+                fill: gray;
+                z-index: 99;
+                
+            }
+            &_close{
+                visibility: hidden;
+                right:0;
+                transition: 500ms fill ease-in;
+            }
+            &_delete{
+                fill: gray;
+                right:5rem;
+                display: none;
+            }
+
+            input{
+                box-shadow: 0 0 10px 5px rgb(208, 208, 208);
+                border: none;
+                border-radius: 50%;
+                margin-left:1.4rem;
+                padding: 0.5rem 1.5rem;
+                font-size: 1.6rem ;
+                color: gray;
+                outline: none;
+                width: 2rem;
+                transition: 
+                    500ms width ease-in-out,
+                    500ms padding ease-in-out,
+                    500ms border-radius ease-in-out;
+                
+                &:not(:placeholder-shown) ~ .topbar_list_search_delete{
+                    display:block ;
+                }
+            }
+            //open-state
+            &-open input{
+                width: 34rem;
+                padding: 0.5rem 11rem 0.5rem 6rem;
+                border-radius: 5rem;
+            }
+
+            &-open svg.topbar_list_search_close{
+                visibility: visible;
+                fill: gray;
+            }
+            
+        }
+        &_item {
+            a{
+                color: black;
+                text-decoration: none;
+            } 
+            list-style-type: none;
+            position: relative;
+            padding: 1.5rem 1rem;
+            cursor: pointer;
+
+            &:hover ul,&:focus ul{
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &_drop{
+                list-style-type: none;
+                position: absolute;
+                top: 3.5rem;
+                left: -0.4rem;
+                box-shadow: 0 0 10px gray;
+                background-color: white;
+                border-radius: 0.5rem;
+                width: 10rem;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 200ms ease-in-out;
+                li{
+                    padding: 0.3rem 1rem;
+                    border-radius: 0.5rem;
+                    transition: background-color 200ms ease-in-out;
+
+                    &:hover,&:focus{
+                        background-color:rgb(101, 233, 211) ;
+                    }
+                }
+            }       
+        }
+    }
+}
+
+//item
+.item{
+    margin:6rem 2rem;
+    display: grid;
+    grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr; //total 100%
+    gap: 2.5rem;
+    
+    &_card{
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+        height: 50vh;
+        border-radius: 0.5rem;
+        box-shadow:0px 2px 20px #bfc7c9;
+        transition: 200ms all ease-in-out;
+        cursor: pointer;
+        &_name{
+            font-size: 0.8rem;
+            color: white;
+            background: red;
+            padding: 0.5rem 1.3rem 0.5rem 1rem;
+            text-transform: uppercase;
+            position: absolute;
+            z-index: 1;
+            top: 1rem;
+            border-radius: 0 2rem 2rem 0;
+        }
+        img{
+            position: absolute;
+            object-fit:cover;
+            height: 35vh;
+            width: 100%;
+        }
+        &_body{
+            &_hashtag{
+                font-size: 1rem;
+                font-weight: 500;
+                color:#4d97b2;
+                position: absolute;
+                top: 15rem;
+                left: 1rem;
+            }
+            &_introduction{
+                font-size: 0.9rem;
+                color:black;
+                position: absolute;
+                top: 17rem;
+                left: 1rem;
+            }
+            &_price{
+                font-size: 0.8rem;
+                color: black;
+                background: rgb(0, 247, 255);
+                padding: 0.5rem 1.3rem 0.5rem 1rem;
+                position: absolute;
+                z-index: 1;
+                bottom: 1rem;
+                right:0;
+                border-radius: 2rem 0 0 2rem;
+            }
+            input{
+                font-weight: 500;
+                background-color: #bfc7c9;
+                border-radius: 1rem;
+                padding: 0.5rem;
+                color:#e31b43;
+                position: absolute;
+                top: 12rem;
+                right: 1rem;
+            }
+            &_price::after{
+                content: "NTD";
+            }
+        } 
+    }
+    &_card:hover{
+        transform: scale(1.05);
+        box-shadow: rgb(8, 243, 204);
+    }
+}
+
+//cart
+.cart{
+    margin:6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    &_card{
+        overflow: hidden;
+        position: relative;
+        background-color: rgb(222, 223, 232);
+        box-shadow:0px 2px 20px #bfc7c9;
+        display:flex ;
+        flex-direction: column;
+        width: 80%;
+        height:40vh;
+        img{
+            position: absolute;
+            object-fit:cover;
+            width: 30%;
+            height: 100%;
+        }
+        &_body{
+            position: absolute;
+            margin: 1rem;
+            width: 65%;
+            height: 35vh;
+            right: 0;
+            &_name{
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            &_hashtag{
+                font-size: 1rem;
+                font-weight: 500;
+                margin-bottom: 1rem;
+                color:#4d97b2;            
+            }
+            &_introduction{
+                font-size: 0.9rem;
+                margin-bottom: 0.8rem;
+                color:black;
+            }
+
+            &_price{
+                font-size: 1.2rem;
+                color: black;
+                background: rgb(0, 247, 255);
+                padding: 0.5rem 1.3rem 0.5rem 1rem;
+                position: absolute;
+                bottom: 1rem;
+                right:-1rem;
+                border-radius: 2rem 0 0 2rem;
+            }
+            &_price::after{
+                content: "NTD";
+            }
+
+
+        }
+    }
+}
+//footer
+.footer{
+    background-color:gray;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    &_contact{
+        display:flex;
+        gap: 1.3rem;
+        list-style: none;
+        position: absolute;
+        top: -2.2rem;
+        right:0;
+        margin:0 2rem;
+    }
+    &_about{
+        display:flex;
+        list-style: none;
+        justify-content: space-between;
+        padding: 1rem 10rem;
+        li a{
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+//responsive
+@media screen and (max-width:1000px){
+    .item{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+@media screen and (max-width:700px){
+    .item{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
