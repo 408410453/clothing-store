@@ -19,4 +19,11 @@ search_delete.addEventListener("click",()=>{
     search_input.focus();
 })
 
+// cart delete
+function Delete(name){
+    var rs = confirm('Confirm to delete?');
+    if (rs) {
+      window.location.href = "/cart/"+name;
+  }
+  }
 

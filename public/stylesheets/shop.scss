@@ -196,7 +196,7 @@ body{
                 border-radius: 2rem 0 0 2rem;
             }
             input{
-                font-weight: 500;
+                font-weight: 400;
                 background-color: #bfc7c9;
                 border-radius: 1rem;
                 padding: 0.5rem;
@@ -204,6 +204,7 @@ body{
                 position: absolute;
                 top: 12rem;
                 right: 1rem;
+                width: 3rem;
             }
             &_price::after{
                 content: "NTD";

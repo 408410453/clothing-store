@@ -1,15 +1,34 @@
-var createError = require('http-errors');
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware')
+var bodyParser = require('body-parser');
+var createError = require('http-errors');
+//sass
+var sassMiddleware = require('node-sass-middleware');
 
-
-
-//shop route
+//shop routed
 var shopRouter = require('./routes/shop');
-var cartRouter = require('./routes/cart');
+
+// 在shop router下方引入 mysql 模組
+var mysql = require('mysql');
+// 建立連線
+var con = mysql.createConnection({
+  host: 'localhost',
+  user: 'shop',
+  password: 'password',
+  database: 'clothing_store'
+});
+
+con.connect(function(err) {
+  if (err) {
+      console.log('connecting error');
+      return;
+  }
+  console.log('connecting success');
+});
+
 
 
 var app = express();
@@ -23,15 +42,23 @@ app.use(sassMiddleware({
   indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true
 }));
+
+
+
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); //抓取頁面資料
 app.use(cookieParser());
-
 app.use(express.static(path.join(__dirname, 'public')));
 
+// db state
+app.use(function(req, res, next) {
+  req.con = con;
+  next();
+});
+
 app.use('/', shopRouter);
-app.use('/cart', cartRouter);
+
 
 
 // catch 404 and forward to error handler
@@ -49,5 +76,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
 
 module.exports = app;

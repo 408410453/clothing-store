@@ -46,12 +46,15 @@
 
     <!--item-->
     <nav class="cart">
+        <% for ( var i = 0 ; i < data.length ; i++){ %>
+        <form name="addform" action="cart" method="post" accept-charset="utf-8" >
         <div class="cart_card">
+            <input id="delete" name="delete" type="button" value="Delete" onclick="Delete('<%= data[i].name  %>');">
             <img src="/images/T-shirt.jpg" alt="">
             <div class="cart_card_body">
-                <p class="cart_card_body_name">clothing</p>
+                <p class="cart_card_body_name"><%= data[i].name %></p>
                 <p class="cart_card_body_hashtag">#clothing #fashtion</p>
-                <p class="cart_card_body_introduction">comfortable and elastic</p>
+                <p class="cart_card_body_introduction"><%= data[i].intro  %></p>
                 <p>color:</p>
                     <p><input type="radio" name="color" value="blue"> blue</p>
                     <p><input type="radio" name="color" value="yellow"> yellow</p>
@@ -63,50 +66,13 @@
                         <input type="radio" name="size" value="L">L
                         <input type="radio" name="size" value="XL">XL
                     </p>
-                <p class="cart_card_body_price">200</p>
+                <p class="cart_card_body_price"><%= data[i].price  %></p>
             </div>
+        </form>
         </div>
-        <div class="cart_card">
-            <img src="/images/T-shirt.jpg" alt="">
-            <div class="cart_card_body">
-                <p class="cart_card_body_name">clothing</p>
-                <p class="cart_card_body_hashtag">#clothing #fashtion</p>
-                <p class="cart_card_body_introduction">comfortable and elastic</p>
-                <p>color:</p>
-                    <p><input type="radio" name="color" value="blue"> blue</p>
-                    <p><input type="radio" name="color" value="yellow"> yellow</p>
-                    <p><input type="radio" name="color" value="black"> black</p>
-                    <p>nuber:  <input type="number" name="number"  min="1" max="10"></p>
-                    <p>size:  
-                        <input type="radio" name="size" value="S">S
-                        <input type="radio" name="size" value="M">M
-                        <input type="radio" name="size" value="L">L
-                        <input type="radio" name="size" value="XL">XL
-                    </p>
-                <p class="cart_card_body_price">200</p>
-            </div>
-        </div>
-        <div class="cart_card">
-            <img src="/images/T-shirt.jpg" alt="">
-            <div class="cart_card_body">
-                <p class="cart_card_body_name">clothing</p>
-                <p class="cart_card_body_hashtag">#clothing #fashtion</p>
-                <p class="cart_card_body_introduction">comfortable and elastic</p>
-                <p>color:</p>
-                    <p><input type="radio" name="color" value="blue"> blue</p>
-                    <p><input type="radio" name="color" value="yellow"> yellow</p>
-                    <p><input type="radio" name="color" value="black"> black</p>
-                    <p>nuber:  <input type="number" name="number"  min="1" max="10"></p>
-                    <p>size:  
-                        <input type="radio" name="size" value="S">S
-                        <input type="radio" name="size" value="M">M
-                        <input type="radio" name="size" value="L">L
-                        <input type="radio" name="size" value="XL">XL
-                    </p>
-                <p class="cart_card_body_price">200</p>
-            </div>
-        </div>
-        <input type="submit" style="width: 70%;" value="check">
+        <% } %>
+        
+        
 
 
        
@@ -126,5 +92,5 @@
     </div>
 
 </body>
-    <script src="./shop.js"></script>
+    <script src="/javascripts/shop.js"></script>
 </html>

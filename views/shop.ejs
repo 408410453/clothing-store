@@ -45,57 +45,26 @@
     </header>
 
     <!--item-->
+
     <nav class="item">
+        <% for ( var i = 0 ; i < data.length ; i++){ %>
+        <form name="addform" action="cart" method="post" accept-charset="utf-8" >
         <div class="item_card">
-                <p class="item_card_name">clothing</p>
+                <p class="item_card_name"><%= data[i].name %></p>
+                <input type="text" name="name" value="<%= data[i].name %> " hidden />
+                <input type="text" name="price" value="<%= data[i].price %>" hidden/>
+                <input type="text" name="intro" value="<%= data[i].intro%>" hidden/>
                 <img src="/images/T-shirt.jpg" alt="">
                 <div class="item_card_body">
                     <p class="item_card_body_hashtag">#clothing #fashtion</p>
-                    <p class="item_card_body_introduction">comfortable and elastic</p>
-                    <p class="item_card_body_price">200</p>
-                    <input type="button" value="buy it"></input>
+                    <p class="item_card_body_introduction"><%= data[i].intro  %></p>
+                    <p class="item_card_body_price"><%= data[i].price  %></p>
+                    <input type="submit" value="buy it"  location.href='cart'></input>
                 </div>
         </div>
-        <div class="item_card">
-            <p class="item_card_name">caps</p>
-            <img src="/images/T-shirt.jpg" alt="">
-            <div class="item_card_body">
-                <p class="item_card_body_hashtag">#clothing #fashtion</p>
-                <p class="item_card_body_introduction">comfortable and elastic</p>
-                <p class="item_card_body_price">200</p>
-                <input type="button" value="buy it"></input>
-            </div>
-        </div>
-        <div class="item_card">
-            <p class="item_card_name">clothing</p>
-            <img src="/images/T-shirt.jpg" alt="">
-            <div class="item_card_body">
-                <p class="item_card_body_hashtag">#clothing #fashtion</p>
-                <p class="item_card_body_introduction">comfortable and elastic</p>
-                <p class="item_card_body_price">200</p>
-                <input type="button" value="buy it"></input>
-            </div>
-        </div>
-        <div class="item_card">
-            <p class="item_card_name">clothing</p>
-            <img src="/images/T-shirt.jpg" alt="">
-            <div class="item_card_body">
-                <p class="item_card_body_hashtag">#clothing #fashtion</p>
-                <p class="item_card_body_introduction">comfortable and elastic</p>
-                <p class="item_card_body_price">200</p>
-                <input type="button" value="buy it"></input>
-            </div>
-        </div>
-        <div class="item_card">
-            <p class="item_card_name">clothing</p>
-            <img src="/images/T-shirt.jpg" alt="">
-            <div class="item_card_body">
-                <p class="item_card_body_hashtag">#clothing #fashtion</p>
-                <p class="item_card_body_introduction">comfortable and elastic</p>
-                <p class="item_card_body_price">200</p>
-                <input type="button" value="buy it"></input>
-            </div>
-        </div>  
+        </form>
+        <% } %>
+        
     </nav>
 
      <!--footer-->
@@ -113,5 +82,6 @@
 
 </body>
 
-   <script src="./shop.js"></script>
+   <script src="/javascripts/shop.js"></script>
+  
 </html>
